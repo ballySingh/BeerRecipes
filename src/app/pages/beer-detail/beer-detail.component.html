@@ -1,0 +1,110 @@
+<div class="row mb-2">
+    <button type="button" class="btn btn-primary" (click)="goBack()">back</button>
+</div>
+<ng-container *ngIf="beer$ | async as beer">
+  <div class="card card-beer">
+      <div class="card-header text-center">
+          Beer Recipe
+        </div>
+    <div class="row no-gutters">
+      <div class="col-md-3 text-center">
+        <img [src]="beer.image_url" class="card-img" alt="{{ beer.name }}" />
+      </div>
+      <div class="col-md-9">
+        <div class="card-body">
+          <h4 class="card-title">{{ beer.name }}</h4>
+          <p class="card-text">{{ beer.tagline }}</p>
+          <h6 class="card-subtitle mb-2 text-muted">Description:</h6>
+          <p class="card-text">{{ beer.description }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="col">
+        <div class="card-body">
+          <h5 class="card-title">Ingredients:</h5>
+
+          <div *ngIf="beer.ingredients.malt">
+            <div class="card bg-light mb-3">
+                <div class="card-header">Malt</div>
+                <div class="card-body">
+                  <div *ngFor="let malt of beer.ingredients.malt" class=" mb-1" [ngClass]="{
+                    'ing-border': beer.ingredients.malt.length > 1
+                  }">
+                    <div class="row no-gutters ing-details">
+                      <div class="col-md-4">
+                        <div>
+                          <div class="font-weight-bold">Name:</div>
+                          {{ malt.name }}
+                        </div>
+                      </div>
+                      <div class="col-md-8">
+                        <div>
+                          <div class="font-weight-bold">Amount:</div>
+                          {{ malt.amount.value }}
+                          {{ malt.amount.unit }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+
+          <div *ngIf="beer.ingredients.hops">
+            <div class="card bg-light mb-3">
+              <div class="card-header">Hops</div>
+              <div class="card-body">
+                <div *ngFor="let hops of beer.ingredients.hops" class="mb-1" [ngClass]="{
+                  'ing-border': beer.ingredients.hops.length > 0
+                }">
+                  <div class="row no-gutters ing-details">
+                    <div class="col-md-4">
+                      <div>
+                        <div class="font-weight-bold">Name:</div>
+                        {{ hops.name }}
+                      </div>
+                    </div>
+                    <div class="col-md-8">
+                      <div>
+                        <div class="font-weight-bold">Amount:</div>
+                        {{ hops.amount.value }}
+                        {{ hops.amount.unit }}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row no-gutters ing-details">
+                    <div class="col-md-4">
+                      <div>
+                        <span class="font-weight-bold">Add:</span>
+                        {{ hops.add }}
+                      </div>
+                    </div>
+                    <div class="col-md-8">
+                      <div>
+                        <span class="font-weight-bold">Attribute: </span>
+                        {{ hops.attribute }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="beer.ingredients.yeast">
+              <div class="card bg-light mb-3">
+                  <div class="card-header">Yeast</div>
+                  <div class="card-body">
+                      <div class="row no-gutters ing-details">
+                          <div>
+                            {{ beer.ingredients.yeast }}
+                          </div>
+                      </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

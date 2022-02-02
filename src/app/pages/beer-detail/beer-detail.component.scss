@@ -1,0 +1,17 @@
+.card-beer {
+    max-width: 800px;
+    margin: 0 auto;
+
+    img {
+        max-width: 50px;
+        padding: 20px 0px;
+    }
+
+    .ing-details{
+        font-size: 14px;
+    }
+
+    .ing-border {
+        border-bottom: 1px solid rgba(0,0,0,.125);
+    }
+}
