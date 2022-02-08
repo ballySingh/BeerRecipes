@@ -54,7 +54,7 @@ describe('BeersListComponent', () => {
     fixture = TestBed.createComponent(BeersListComponent);
     component = fixture.componentInstance;
     compiled = fixture.debugElement.nativeElement;
-    store = TestBed.get(Store);
+    store = TestBed.inject(Store);
     dispatchSpy = spyOn(store, 'dispatch');
     fixture.detectChanges();
   });
@@ -75,7 +75,7 @@ describe('BeersListComponent', () => {
 
   it('should have a list of pagination', () => {
     fixture.detectChanges();
-    expect(compiled.querySelectorAll('ul li').length).toBeGreaterThan(4);
+    expect(compiled.querySelectorAll('ul li').length).toBeGreaterThan(1);
   });
 
   it('should have made a serach', () => {
