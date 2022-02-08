@@ -231,7 +231,7 @@ export class BeersService {
   public getConfigResponse(): Observable<HttpResponse<Object>> {
     return this.http.get<HttpResponse<Object>>(
       `https://api.punkapi.com/v2/beers`, { observe: 'response' }).pipe(
-        tap(resp => console.log('heaeder', resp.headers.get('x-ratelimit-remaining')))
+        tap(resp => console.log('header', resp.headers.get('x-ratelimit-remaining')))
    );
   }
 
